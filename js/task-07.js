@@ -26,8 +26,7 @@ const account = {
    */
   createTransaction(amount, type) {
     const id = this.transactions.length + 1;
-    const transaction = { id, amount, type };
-    return transaction;
+    return { id, amount, type };
   },
 
   /*
@@ -54,12 +53,11 @@ const account = {
     if (amount > balance) {
       console.log("Транзакция отклонена! Недостаточно средств на счету!");
       return;
-    } else {
-      this.balance -= amount;
-      this.transactions.push(
-        this.createTransaction(amount, Transaction.WITHDRAW)
-      );
     }
+    this.balance -= amount;
+    this.transactions.push(
+      this.createTransaction(amount, Transaction.WITHDRAW)
+    );
   },
 
   /*
